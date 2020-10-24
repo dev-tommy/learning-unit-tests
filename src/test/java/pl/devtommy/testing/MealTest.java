@@ -37,4 +37,14 @@ class MealTest {
         //then
         assertNotSame(meal1, meal2);
     }
+
+    @Test
+    void twoMealsShouldBeEqualWhenPriceAndNameAreTheSame() {
+        //given
+        Meal meal1 = new Meal(10, "Pizza");
+        Meal meal2 = new Meal(10, "Pizza");
+
+        //then
+        assertEquals(meal1, meal2);
+    }
 }
