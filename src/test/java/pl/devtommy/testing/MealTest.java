@@ -27,4 +27,14 @@ class MealTest {
         //then
         assertSame(meal1, meal2);
     }
+
+    @Test
+    void referencesToDifferentObjectShouldNotBeEqual() {
+        //given
+        Meal meal1 = new Meal(10);
+        Meal meal2 = new Meal(10);
+
+        //then
+        assertNotSame(meal1, meal2);
+    }
 }
