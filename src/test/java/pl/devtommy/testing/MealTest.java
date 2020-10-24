@@ -17,4 +17,14 @@ class MealTest {
         //then
         assertEquals(28, discountedPrice);
     }
+
+    @Test
+    void referencesToTheSameObjectShouldBeEqual() {
+        //given
+        Meal meal1 = new Meal(10);
+        Meal meal2 = meal1;
+
+        //then
+        assertSame(meal1, meal2);
+    }
 }
