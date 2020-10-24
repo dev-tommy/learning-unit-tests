@@ -1,4 +1,4 @@
-package pl.devtommy;
+package pl.devtommy.testing;
 
 public class Account {
 
