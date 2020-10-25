@@ -42,4 +42,20 @@ class OrderTest {
         assertThat(order.getMeals(), hasSize(1));
         assertThat(order.getMeals(), contains(meal));
     }
+
+    @Test
+    void removingMealFromOrderShouldDecreaseOrderSize() {
+        //given
+        Meal meal = new Meal(15, "Burger");
+        Order order = new Order();
+
+        //when
+        order.addMealToOrder(meal);
+        order.removeMealFromOrder(meal);
+
+        //then
+        assertThat(order.getMeals(), hasSize(0));
+        assertThat(order.getMeals(), not(contains(meal)));
+        assertThat(order.getMeals(), not(hasItem(meal)));
+    }
 }
