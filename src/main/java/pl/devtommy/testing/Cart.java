@@ -13,4 +13,15 @@ public class Cart {
     void clearCart() {
         this.orders.clear();
     }
+
+    void simulateLargeOrder() {
+        for (int i = 0; i < 1_000; i++) {
+            Meal meal = new Meal(i % 10, "Hamburger no " + 1);
+            Order order = new Order();
+            order.addMealToOrder(meal);
+            addOrderToCart(order);
+        }
+        System.out.println("Cart size: " + orders.size());
+        clearCart();
+    }
 }
