@@ -6,6 +6,8 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -87,5 +89,17 @@ class MealTest {
             Arguments.of("Hamburger", 10),
             Arguments.of("Cheeseburger", 12)
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("createCakeNames")
+    void cakeNamesShouldEndWithCake(String name) {
+        assertThat(name, notNullValue());
+        assertThat(name, endsWith("cake"));
+    }
+
+    private static Stream<String> createCakeNames() {
+        List<String> cakeNames = Arrays.asList("Cheesecake", "Fruitcake", "Cupcake");
+        return cakeNames.stream();
     }
 }
