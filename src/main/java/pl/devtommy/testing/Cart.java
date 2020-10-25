@@ -10,6 +10,10 @@ public class Cart {
         this.orders.add(order);
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
     void clearCart() {
         this.orders.clear();
     }
