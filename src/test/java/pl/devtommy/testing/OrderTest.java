@@ -2,6 +2,9 @@ package pl.devtommy.testing;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -73,5 +76,19 @@ class OrderTest {
         //then
         assertThat(order.getMeals(), contains(meal1, meal2)); //order of items is important
         assertThat(order.getMeals(), containsInAnyOrder(meal1, meal2)); //order of items is not important
+    }
+
+    @Test
+    void testIfTwoMealListsAreTheSame() {
+        //given
+        Meal meal1 = new Meal(15, "Burger");
+        Meal meal2 = new Meal(5, "Sandwich");
+        Meal meal3 = new Meal(22, "Kebab");
+
+        List<Meal> meals1 = Arrays.asList(meal1, meal2);
+        List<Meal> meals2 = Arrays.asList(meal1, meal2);
+
+        //then
+        assertThat(meals1, is(meals2));
     }
 }
