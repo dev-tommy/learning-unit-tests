@@ -58,4 +58,20 @@ class OrderTest {
         assertThat(order.getMeals(), not(contains(meal)));
         assertThat(order.getMeals(), not(hasItem(meal)));
     }
+
+    @Test
+    void mealsShouldBeInCorrectOrderAfterAddingThemToOrder() {
+        //given
+        Meal meal1 = new Meal(15, "Burger");
+        Meal meal2 = new Meal(5, "Sandwich");
+        Order order = new Order();
+
+        //when
+        order.addMealToOrder(meal1);
+        order.addMealToOrder(meal2);
+
+        //then
+        assertThat(order.getMeals(), contains(meal1, meal2)); //order of items is important
+        assertThat(order.getMeals(), containsInAnyOrder(meal1, meal2)); //order of items is not important
+    }
 }
