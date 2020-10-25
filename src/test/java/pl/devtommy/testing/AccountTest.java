@@ -13,8 +13,8 @@ class AccountTest {
         //given, when
         Account newAccount = new Account();
         //then
-        assertFalse(newAccount.isActive(), "Check if new account is not active");
-        assertThat(newAccount.isActive(), equalTo(false));
+        //assertFalse(newAccount.isActive(), "Check if new account is not active");
+        //assertThat(newAccount.isActive(), equalTo(false));
         assertThat(newAccount.isActive(), is(false));
     }
 
@@ -25,7 +25,8 @@ class AccountTest {
         //when
         newAccount.activate();
         //then
-        assertTrue(newAccount.isActive(),"Check if new account is active");
+        //assertTrue(newAccount.isActive(),"Check if new account is active");
+        assertThat(newAccount.isActive(), is(true));
     }
 
     @Test
@@ -35,7 +36,8 @@ class AccountTest {
         //when
         Address address = account.getDefaultDeliveryAddress();
         //then
-        assertNull(address);
+        //assertNull(address);
+        assertThat(address, is(nullValue()));
     }
 
     @Test
@@ -47,6 +49,7 @@ class AccountTest {
         //when
         address = account.getDefaultDeliveryAddress();
         //then
-        assertNotNull(address);
+        //assertNotNull(address);
+        assertThat(address, is(notNullValue()));
     }
 }
