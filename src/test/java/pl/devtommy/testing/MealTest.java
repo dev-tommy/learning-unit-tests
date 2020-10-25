@@ -1,6 +1,8 @@
 package pl.devtommy.testing;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -61,5 +63,12 @@ class MealTest {
 
         //when, then
         assertThrows(IllegalArgumentException.class, () -> meal.getDiscountedPrice(40));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {5, 10, 15, 19})
+    void mealPricesShouldBeLowerThan20(int price) {
+        assertThat(price, lessThan(20));
+
     }
 }
