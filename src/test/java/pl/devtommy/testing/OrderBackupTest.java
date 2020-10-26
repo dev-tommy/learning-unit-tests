@@ -26,6 +26,7 @@ class OrderBackupTest {
 
     }
 
+    @Tag("fries")
     @Test
     void backupOrderWithOneMeal() throws IOException {
         //given

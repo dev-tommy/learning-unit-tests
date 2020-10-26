@@ -1,9 +1,6 @@
 package pl.devtommy.testing;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -121,6 +118,7 @@ class MealTest {
         assertThat(price, lessThan(20));
     }
 
+    @Tag("fries")
     @TestFactory
     @DisplayName("Dynamic Test Example")
     Collection<DynamicTest> calculateMealPrices() {
