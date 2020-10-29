@@ -16,13 +16,13 @@ class CartTest {
 
     @Disabled
     @Test
-    @DisplayName("Cart is able to process 1000 orders in 7ms")
+    @DisplayName("Cart is able to process 1000 orders in 10ms")
     void simulateLargeOrder() {
         //given
         Cart cart = new Cart();
 
         //when, then
-        assertTimeout(Duration.ofMillis(7), cart::simulateLargeOrder);
+        assertTimeout(Duration.ofMillis(10), cart::simulateLargeOrder);
     }
 
     @Test
