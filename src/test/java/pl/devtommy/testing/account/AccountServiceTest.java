@@ -3,6 +3,8 @@ package pl.devtommy.testing.account;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,6 +29,21 @@ public class AccountServiceTest {
 
         //then
         assertThat(accountList, hasSize(2));
+    }
+
+    @Test
+    void getNoActiveAccounts() {
+
+        //given
+        AccountRepository accountRepository = mock(AccountRepository.class);
+        AccountService accountService = new AccountService(accountRepository);
+        given(accountRepository.getAllAccounts()).willReturn(Collections.emptyList());
+
+        //when
+        List<Account> accountList = accountService.getAllActiveAccounts();
+
+        //then
+        assertThat(accountList, hasSize(0));
     }
 
     private List<Account> prepareAccountData(){
