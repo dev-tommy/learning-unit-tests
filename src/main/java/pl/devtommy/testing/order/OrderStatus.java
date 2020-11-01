@@ -1,4 +1,4 @@
-package pl.devtommy.testing;
+package pl.devtommy.testing.order;
 
 public enum OrderStatus {
     ORDERED, READY, DELIVERED

@@ -7,6 +7,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import pl.devtommy.testing.extensions.IAExceptionIgnoreExtension;
+import pl.devtommy.testing.order.Order;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -122,7 +124,7 @@ class MealTest {
     @TestFactory
     @DisplayName("Dynamic Test Example")
     Collection<DynamicTest> calculateMealPrices() {
-        Order order = new Order();
+        pl.devtommy.testing.order.Order order = new Order();
         order.addMealToOrder(new Meal(10, 2, "Hamburger"));
         order.addMealToOrder(new Meal(7, 4, "Fries"));
         order.addMealToOrder(new Meal(22, 3, "Pizza"));

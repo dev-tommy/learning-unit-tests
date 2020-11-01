@@ -1,5 +1,7 @@
 package pl.devtommy.testing;
 
+import pl.devtommy.testing.order.Order;
+
 import java.util.ArrayList;
 import java.util.List;
 

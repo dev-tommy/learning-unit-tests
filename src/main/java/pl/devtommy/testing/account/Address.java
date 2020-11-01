@@ -1,4 +1,4 @@
-package pl.devtommy.testing;
+package pl.devtommy.testing.account;
 
 public class Address {
     private String street;
