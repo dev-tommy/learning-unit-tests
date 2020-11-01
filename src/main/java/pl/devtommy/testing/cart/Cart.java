@@ -1,5 +1,6 @@
-package pl.devtommy.testing;
+package pl.devtommy.testing.cart;
 
+import pl.devtommy.testing.Meal;
 import pl.devtommy.testing.order.Order;
 
 import java.util.ArrayList;
