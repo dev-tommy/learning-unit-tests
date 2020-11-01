@@ -3,7 +3,6 @@ package pl.devtommy.testing.account;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class AccountServiceTest {
     @Test
@@ -22,7 +20,7 @@ public class AccountServiceTest {
         AccountRepository accountRepository = mock(AccountRepository.class);
         AccountService accountService = new AccountService(accountRepository);
         //when(accountRepository.getAllAccounts()).thenReturn(accounts);
-        given(accountRepository.getAllAccounts()).willReturn(accounts);
+        given(accountRepository.getAllAccounts()).willReturn(accounts); //BDD methodology
 
         //when
         List<Account> accountList = accountService.getAllActiveAccounts();
