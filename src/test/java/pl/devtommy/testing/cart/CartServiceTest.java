@@ -1,6 +1,7 @@
 package pl.devtommy.testing.cart;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InOrder;
 import pl.devtommy.testing.order.Order;
 import pl.devtommy.testing.order.OrderStatus;
@@ -63,6 +64,31 @@ class CartServiceTest {
         //then
         //then(cartHandler).should(never()).sendToPrepare(cart); //BDD methodology
         verify(cartHandler, never()).sendToPrepare(cart);
+
+        assertThat(resultCart.getOrders(), hasSize(1));
+        assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.REJECTED));
+
+    }
+
+    @Test
+    void processCartShouldNotSendToPrepareWithArgumentMatchers() {
+
+        //given
+        Order order = new Order();
+        Cart cart = new Cart();
+        cart.addOrderToCart(order);
+
+        CartHandler cartHandler = mock(CartHandler.class);
+        CartService cartService = new CartService(cartHandler);
+
+        given(cartHandler.canHandleCart(any())).willReturn(false);
+
+        //when
+        Cart resultCart = cartService.processCart(cart);
+
+        //then
+        //then(cartHandler).should(never()).sendToPrepare(cart); //BDD methodology
+        verify(cartHandler, never()).sendToPrepare(ArgumentMatchers.any(Cart.class));
 
         assertThat(resultCart.getOrders(), hasSize(1));
         assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.REJECTED));
