@@ -94,4 +94,24 @@ class CartServiceTest {
         assertThat(resultCart.getOrders().get(0).getOrderStatus(), equalTo(OrderStatus.REJECTED));
 
     }
+
+    @Test
+    void canHandleCartShouldReturnMultipleValues() {
+
+        //given
+        Order order = new Order();
+        Cart cart = new Cart();
+        cart.addOrderToCart(order);
+
+        CartHandler cartHandler = mock(CartHandler.class);
+
+        given(cartHandler.canHandleCart(cart)).willReturn(true, false, false, true);
+
+
+        //then
+        assertThat(cartHandler.canHandleCart(cart), equalTo(true));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(false));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(false));
+        assertThat(cartHandler.canHandleCart(cart), equalTo(true));
+    }
 }
